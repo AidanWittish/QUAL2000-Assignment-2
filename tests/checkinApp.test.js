@@ -23,6 +23,19 @@ test.describe("Testing the functions in checkinApp.js", () => {
     assert.strictEqual(event.attendees[0].email, "john@email.com");
   });
 
+  //This test makes sure you create an attendee with the required information
+  test("Should not allow registration with missing information", () => {
+    const event = new Event(1, "Test Event", "2024-12-31", 100);
+    assert.throws(() => registerAttendee(event, "", "john@email.com"));
+    assert.throws(() => registerAttendee(event, "John Doe", ""));
+  });
+
+  //This test makes sure you input a valid email address when registering an attendee.
+  test("Should not allow registration with invalid email", () => {
+    const event = new Event(1, "Test Event", "2024-12-31", 100);
+    assert.throws(() => registerAttendee(event, "John Doe", "invalid-email"));
+  });
+
   //This test makes sure that you can't register more attendees than the event's capacity allows.
   test("Should not allow registration when event capacity is reached", () => {
     const event = new Event(1, "Test Event", "2024-12-31", 1);

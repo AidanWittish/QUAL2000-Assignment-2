@@ -25,6 +25,11 @@ class Event {
 //It checks for valid email format, event capacity,
 //and duplicate registrations before adding the attendee to the event's list.
 const registerAttendee = (event, name, email) => {
+  if (!name || !email) {
+    //if the name or email is missing or empty, throw an error
+    throw new Error("Name and email are required.");
+  }
+
   if (!email.includes("@")) {
     //if the email does not contain an "@" symbol, it is considered invalid
     throw new Error("Invalid email format.");

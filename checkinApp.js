@@ -96,6 +96,21 @@ const generateConsoleReport = (event) => {
   });
 };
 
+//TEST CODE
+
+// Create a new event
+const event = new Event(1, "Tech Conference", "2026-04-15", 100);
+
+// Register attendees
+registerAttendee(event, "Alice Smith", "alice@example.com");
+registerAttendee(event, "Bob Johnson", "bob@example.com");
+
+// Check in one attendee
+checkInAttendee(event, "alice@example.com");
+
+// Generate console report
+generateConsoleReport(event);
+
 module.exports = {
   Event,
   Attendee,

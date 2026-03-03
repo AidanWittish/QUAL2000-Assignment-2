@@ -46,7 +46,7 @@ const registerAttendee = (event, name, email) => {
   }
 
   const attendee = new Attendee(name, email);
-  event.attendees.push(attendee);
+  event.attendees.push(attendee); //
 };
 
 //THis function checks in an attendee for a given event by their email.

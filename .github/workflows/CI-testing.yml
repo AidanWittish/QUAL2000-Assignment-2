@@ -1,0 +1,35 @@
+#Name the workflow
+name: CI and Testing
+
+#Trigger to run the workflow
+on:
+  push:
+    branches: master
+  pull_request:
+    branches: master
+
+#job to run
+jobs:
+  #Name of the job
+  build:
+    #the type of runner machine
+    runs-on: ubuntu-latest
+
+    #steps we want to run on the runner machine
+    steps:
+      #Step 1: Check out the code from the repository (download the repo on the runner)
+      - uses: actions/checkout@v4
+
+      #Step 2: Set upt Node.js environment on the runner
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      #Step 3: Install the repo's dependencies from package.json
+      - name: Install dependencies
+        run: npm install
+
+      #step 4: Run the unit and integration tests
+      - name: Run tests
+        run: npm test
